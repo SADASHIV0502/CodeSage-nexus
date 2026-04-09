@@ -48,7 +48,7 @@ def get_auth_link():
     try: 
         with open(".verifier_temp", "w") as f: f.write(verifier)
     except: pass
-    return f"{url}/auth/v1/authorize?provider=github&redirect_to=http://localhost:8501&code_challenge={challenge}&code_challenge_method=S256&scopes=repo"
+    return f"{url}/auth/v1/authorize?provider=github&redirect_to=https://codesage-nexus-ky7pjh33kwnvkqs3n6htce.streamlit.app&code_challenge={challenge}&code_challenge_method=S256&scopes=repo"
 
 def exchange_code(code):
     try: 
