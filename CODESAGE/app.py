@@ -31,6 +31,7 @@ import features.profile_page
 load_dotenv()
 url = os.environ.get("SUPABASE_URL")
 key = os.environ.get("SUPABASE_KEY")
+site_url = os.environ.get("SITE_URL", "http://localhost:8501")
 
 if not url or not key:
     st.error("❌ API Keys missing. Check .env file.")
@@ -48,14 +49,14 @@ def get_auth_link():
     try: 
         with open(".verifier_temp", "w") as f: f.write(verifier)
     except: pass
-    return f"{url}/auth/v1/authorize?provider=github&redirect_to=http://localhost:8501&code_challenge={challenge}&code_challenge_method=S256&scopes=repo"
+    return f"{url}/auth/v1/authorize?provider=github&redirect_to={site_url}&code_challenge={challenge}&code_challenge_method=S256&scopes=repo"
 
 def exchange_code(code):
     try: 
         with open(".verifier_temp", "r") as f: verifier = f.read().strip()
     except: return None
     res = requests.post(f"{url}/auth/v1/token?grant_type=pkce", json={
-        "auth_code": code, "code_verifier": verifier, "redirect_uri": "http://localhost:8501"
+        "auth_code": code, "code_verifier": verifier, "redirect_uri": site_url
     }, headers={"apikey": key, "Content-Type": "application/json"})
     return res.json() if res.status_code == 200 else None
 
