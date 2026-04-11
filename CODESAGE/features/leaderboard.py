@@ -396,14 +396,12 @@ def render_leaderboard_page():
                 tier = get_rank_tier(score)
                 is_current = "current-user" if name == current_user_profile.get("full_name", "") else ""
                 
-                html_rows += f"""
-                    <div class='arena-row {is_current}'>
-                        <div class='arena-rank'>#{idx+1}</div>
-                        <div class='arena-name'>{name}</div>
-                        <div class='arena-tier'>[{tier}]</div>
-                        <div class='arena-score'>{score} XP</div>
-                    </div>
-                """
+                html_rows += f"""<div class='arena-row {is_current}'>
+<div class='arena-rank'>#{idx+1}</div>
+<div class='arena-name'>{name}</div>
+<div class='arena-tier'>[{tier}]</div>
+<div class='arena-score'>{score} XP</div>
+</div>"""
             html_rows += "</div>"
             st.markdown(html_rows, unsafe_allow_html=True)
 
