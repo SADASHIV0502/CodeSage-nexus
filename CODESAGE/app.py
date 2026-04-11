@@ -86,31 +86,14 @@ def render_sidebar(profile):
                 <img src="{avatar_url}" style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid #00FFEA; box-shadow: 0 0 15px rgba(0,255,234,0.5); object-fit: cover; transition: 0.3s;" id="profile-avatar-img"/>
             </div>
             <style>
-                /* Add hover animation via adjacent CSS to the actual image wrapper */
                 #profile-avatar-img:hover {{
                     transform: scale(1.1); box-shadow: 0 0 25px rgba(0,255,234,0.8); border-color: #fff;
-                }}
-                /* Make the primary Python button invisible and pull it directly over the image */
-                [data-testid="stSidebar"] button[kind="primary"] {{
-                    margin-top: -85px !important; /* Pull up directly over the image */
-                    width: 80px !important;
-                    height: 80px !important;
-                    margin-left: auto !important;
-                    margin-right: auto !important;
-                    border-radius: 50% !important;
-                    opacity: 0 !important; /* Completely invisible */
-                    cursor: pointer !important;
-                    display: block !important;
-                    z-index: 10 !important;
-                }}
-                [data-testid="stSidebar"] button[kind="primary"] p {{
-                    display: none !important;
                 }}
             </style>
         """, unsafe_allow_html=True)
         
-        # CSS Hijacked into turning this primary button into the Profile Avatar Image!
-        if st.button(" ", type="primary", use_container_width=False): 
+        st.write("") # Small spacing
+        if st.button("👤 View Profile", use_container_width=True): 
             st.session_state["page"] = "profile_page"; st.rerun()
 
         st.markdown(f"<div style='text-align:center;'><b>{profile.get('full_name')}</b></div>", unsafe_allow_html=True)
