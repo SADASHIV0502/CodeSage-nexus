@@ -38,7 +38,7 @@ def analyze_security(code, language):
     try:
         with st.spinner("VANGUARD IS SCANNING NEURAL PATHWAYS FOR THREATS... 🛡️"):
             completion = client.chat.completions.create(
-                model="llama-3.1-70b-versatile",
+                model="llama-3.1-8b-instant",
                 messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": f"SCAN THIS PROTOCOL:\n{code}"}],
                 temperature=0.1 
             )
