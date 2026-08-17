@@ -75,7 +75,7 @@ def generate_docs(input_text, language="Python"):
     try:
         with st.spinner("CodeSage is writing your documentation... ✍️"):
             completion = client.chat.completions.create(
-                model="llama-3.1-70b-versatile",
+                model="llama-3.1-8b-instant",
                 messages=[{"role": "system", "content": system_prompt},
                           {"role": "user", "content": f"DOCUMENT THIS CODE:\n{input_text}"}],
                 temperature=0.2
