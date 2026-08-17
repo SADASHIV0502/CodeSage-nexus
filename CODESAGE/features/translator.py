@@ -20,7 +20,7 @@ def translate_code(code, source_lang, target_lang):
     try:
         with st.spinner(f"Translating to {target_lang}... 🌍"):
             completion = client.chat.completions.create(
-                model="llama-3.1-8b-instant",
+                model="groq/compound",
                 messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": code}],
                 temperature=0.1
             )
