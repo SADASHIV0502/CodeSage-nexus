@@ -77,7 +77,7 @@ def process_github_task(code, task_type, filename):
     
     try:
         comp = client.chat.completions.create(
-            model="llama-3.1-70b-versatile",
+            model="llama-3.1-8b-instant",
             messages=[{"role": "system", "content": sys_prompt}, {"role": "user", "content": f"FILE: {filename}\n\n{code}"}],
             temperature=0.1
         )
