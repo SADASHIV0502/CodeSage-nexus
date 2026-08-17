@@ -47,7 +47,7 @@ def analyze_code_with_groq(code, language):
     
     try:
         completion = client.chat.completions.create(
-            model="llama-3.1-70b-versatile",
+            model="llama-3.1-8b-instant",
             messages=[{"role": "system", "content": system_prompt},
                       {"role": "user", "content": f"AUDIT THIS:\n{code}"}],
             temperature=0.2 
