@@ -21,7 +21,7 @@ def solve_task(task_desc, code_context):
     try:
         with st.spinner("CodeSage is solving the issue... 🛠️"):
             completion = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="llama-3.1-70b-versatile",
                 messages=[{"role": "system", "content": system_prompt}, 
                           {"role": "user", "content": f"TASK:\n{task_desc}\n\nCODE CONTEXT:\n{code_context}"}],
                 temperature=0.2
